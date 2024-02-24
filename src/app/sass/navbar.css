@@ -1,0 +1,42 @@
+.Navbar_div {
+  background-color: #212731;
+  height: 3rem;
+  display: flex;
+}
+
+body {
+  margin: 0;
+}
+
+.Nav_search_div {
+  margin-left: 24rem;
+  margin-top: 10px;
+  background-color: white;
+  border-radius: 7px;
+  height: 1.8rem;
+  width: 20rem;
+  display: flex;
+}
+
+.Navbar_search {
+  outline: none;
+  background-color: transparent;
+  border: none;
+}
+
+.Navbar_search_icon {
+  margin-left: 1rem;
+  margin-top: 0.3rem;
+  margin-right: 1rem;
+}
+
+.Nav_items {
+  margin-left: 5rem;
+  margin-top: 10px;
+}
+
+.Nav_item_ancor {
+  color: #D1D6DA;
+  text-decoration: none;
+  margin-left: 2rem;
+}/*# sourceMappingURL=navbar.css.map */
