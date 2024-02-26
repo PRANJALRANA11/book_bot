@@ -3,6 +3,7 @@ import styles from "./page.module.css";
 import Navbar from "./Components/Navbar";
 import Header from "./Components/Header";
 import Products from "./Components/Products";
+import RelatedProducts from "./Components/RelatedProducts";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
    <Navbar />
    <Header />
    <Products />
+   <RelatedProducts />
    </>
   );
 }

@@ -109,4 +109,35 @@
 button:hover {
   background-color: #1B88F4;
   cursor: pointer;
+}
+
+.Related_products_div {
+  display: flex;
+}
+
+.related_h1 {
+  margin-left: 14rem;
+  margin-top: 3rem;
+  color: #2C384A;
+  font-weight: 400;
+  margin-top: 15rem;
+  font-size: 3rem;
+}
+
+.Related_products_1 {
+  margin-left: 14rem;
+  margin-top: 5rem;
+}
+
+.Related_products_1 button {
+  background-color: #1B88F4;
+  width: 232px;
+  height: 48px;
+  border-radius: 10px;
+  color: white;
+  font-size: 1rem;
+  margin-top: 1rem;
+  margin-left: 2rem;
+  text-align: center;
+  border: none;
 }/*# sourceMappingURL=product.css.map */
