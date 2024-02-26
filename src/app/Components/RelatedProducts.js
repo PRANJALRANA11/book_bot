@@ -65,9 +65,12 @@ export default function RelatedProducts() {
             </div>
             <button>View Deal</button>
         </div>
-        <div></div>
-        <div></div>
       </div>
+      <div style={{display:"flex"}}>
+            <h1 style={{marginLeft:"13rem",fontWeight:"500", color:"#5C6874", marginTop:"9rem",marginRight:"25rem"}}>Sign up and get exclusive special deals</h1>
+            <input style={{height:"52px",width:"348px" , marginTop:"9rem",borderRadius:"10px 0px 0px 10px",borderColor:"#9FA9B3"}}/>
+            <button style={{backgroundColor:"#1B88F4",width:"97px",height:"57px", marginTop:"9rem",border:"none",borderRadius:"0px 10px 10px 0px"}}>Sign Up</button>
+        </div>
     </div>
   )
 }
