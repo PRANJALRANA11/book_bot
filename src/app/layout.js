@@ -1,6 +1,7 @@
 import { Inter } from "next/font/google";
 import "./sass/navbar.css";
 import "./sass/header.css";
+import "./sass/product.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
