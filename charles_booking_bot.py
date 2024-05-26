@@ -8,17 +8,22 @@ from selenium.common.exceptions import TimeoutException, ElementClickIntercepted
 import re
 import time
 
-def run_selenium_script(email, password, log_placeholder):
+def run_selenium_script(email, password):
+    # Create a placeholder for the log messages
+    log_placeholder = st.empty()
+
     def log_message(message):
+        # Update the placeholder with a new message
         log_placeholder.markdown(message)
 
+    # Initialize the WebDriver
     options = webdriver.ChromeOptions()
-    options.add_argument('--headless')
+    options.add_argument('--headless-new')
     options.add_argument('--disable-gpu')
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
-    options.add_argument("--window-size=1920,1080")  # Set window size to standard desktop resolution
     driver = webdriver.Chrome(options=options)
+
 
     try:
         log_message(":earth_americas: Navigating to the webpage...")
@@ -122,6 +127,8 @@ def run_selenium_script(email, password, log_placeholder):
         driver.quit()
 
     return False
+
+
 def main():
     st.title("Reservation Script")
 
@@ -132,43 +139,33 @@ def main():
     email = st.text_input("Email")
     password = st.text_input("Password", type="password")
 
-    start_button_placeholder = st.empty()
-    stop_button_placeholder = st.empty()
-    log_placeholder = st.empty()
-
-    if st.session_state.running:
-        if stop_button_placeholder.button("Stop Reservation"):
-            st.session_state.running = False
-    else:
-        if start_button_placeholder.button("Start Reservation"):
-            if email and password:
-                st.session_state.running = True
-                st.info("Reservation is in process...")
-                
-                retry_limit = 3
-                retry_count = 0
-                success = False
-
-                while retry_count < retry_limit and not success:
-                    if not st.session_state.running:
-                        st.warning("Reservation process stopped.")
+    if st.button("Start Reservation"):
+        if email and password:
+            st.session_state.running = True  # Set the running flag to True
+            st.info("reservation is in process...")
+            retry_limit = 3
+            retry_count = 0
+            success = False
+            while retry_count < retry_limit and not success:
+                if not st.session_state.running:  # Check if the stop button has been clicked
+                    st.warning("Reservation process stopped.")
+                    break
+                try:
+                    success = run_selenium_script(email, password)
+                    if success:
                         break
-                    try:
-                        success = run_selenium_script(email, password, log_placeholder)
-                        if success:
-                            break
-                    except WebDriverException:
-                        retry_count += 1
-                        time.sleep(10)
-                if not success and st.session_state.running:
-                    st.error("Failed to make a reservation after multiple attempts.")
-                st.session_state.running = False
-            else:
-                st.error("Please enter both email and password")
+                except WebDriverException:
+                    retry_count += 1
+                    time.sleep(10)  # Wait for 10 seconds before retrying
+            if not success and st.session_state.running:
+                st.error("Failed to make a reservation after multiple attempts.")
+            st.session_state.running = False  # Reset the running flag
+        else:
+            st.error("Please enter both email and password")
 
-    if st.session_state.running:
-        if stop_button_placeholder.button("Stop Reservation"):
-            st.session_state.running = False
+    if st.button("Stop Reservation"):
+        st.session_state.running = False  # Set the running flag to False
+
 
 if __name__ == "__main__":
     main()
