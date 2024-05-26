@@ -18,7 +18,7 @@ def run_selenium_script(email, password, log_placeholder):
     options.add_argument('--no-sandbox')
     options.add_argument('--disable-dev-shm-usage')
     options.add_argument("--window-size=1920,1080")  # Set window size to standard desktop resolution
-    driver = webdriver.Chrome()
+    driver = webdriver.Chrome(options=options)
 
     try:
         log_message(":earth_americas: Navigating to the webpage...")
